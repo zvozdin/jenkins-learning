@@ -18,6 +18,7 @@ pipeline {
             }
         }
     }
+    
     post {
         always {
             emailext body: 'hello from jenkins', subject: 'Pipeline Status', to: 'zvyozdin@gmail.com'
