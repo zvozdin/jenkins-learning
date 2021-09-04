@@ -1,27 +1,26 @@
 pipeline {
     agent any
 
+    tools {
+        maven "MAVEN_HOME"
+    }
+
     stages {
         stage('Build') {
             steps {
-                echo 'Build World'
+                git 'https://github.com/zvozdin/jenkins-learning.git'
+
+                bat "mvn clean test"
             }
-        }
-        stage('Test') {
-            steps {
-                echo 'Test App'
+
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
             }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploy App'
-            }
-        }
-    }
-    
-    post {
-        always {
-            emailext body: 'hello from jenkins', subject: 'Pipeline Status', to: 'zvyozdin@gmail.com'
         }
     }
 }
