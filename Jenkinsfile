@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 git 'https://github.com/zvozdin/jenkins-learning.git'
-                echo 'We are building artifacts for ${BUILD_NUMBER}' > output.txt
+                echo 'We are building artifacts for ${BUILD_NUMBER}'
                 bat "mvn clean test"
             }
         }
