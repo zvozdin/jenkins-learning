@@ -16,7 +16,7 @@ pipeline {
         stage('Archive') {
             steps {
                 sh """
-                    pushd D:\JAVA\study\jenkins-learning\build\libs
+                    cd /mnt/d/JAVA/study/jenkins-learning/build/libs
                 """
                 archiveArtifacts artifacts: '**', onlyIfSuccessful: true
             }
