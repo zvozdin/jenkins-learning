@@ -10,17 +10,17 @@ pipeline {
             steps {
                 git 'https://github.com/zvozdin/jenkins-learning.git'
 
-                bat "mvn clean package"
+                bat "mvn clean test"
             }
 
-            post {
+//             post {
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
-                success {
-                    junit '**/target/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
-                }
-            }
+//                 success {
+//                     junit '**/target/TEST-*.xml'
+//                     archiveArtifacts 'target/*.jar'
+//                 }
+//             }
         }
     }
 }
