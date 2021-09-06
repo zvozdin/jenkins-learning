@@ -10,12 +10,13 @@ pipeline {
             steps {
                 git 'https://github.com/zvozdin/jenkins-learning.git'
                 echo 'We are building artifacts for ${BUILD_NUMBER}'
-                bat "mvn clean test"
+                bat "mvn clean package"
             }
         }
         stage('Archive') {
             steps {
-                archiveArtifacts artifacts: '*.jar', onlyIfSuccessful: true
+                bat "pushd D:\JAVA\study\jenkins-learning\build\libs"
+                archiveArtifacts artifacts: '**', onlyIfSuccessful: true
             }
         }
     }
