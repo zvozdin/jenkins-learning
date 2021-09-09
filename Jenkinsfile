@@ -24,7 +24,6 @@ pipeline {
 
                 bat "${mavenCommand}"
 //                 git 'https://github.com/zvozdin/jenkins-learning.git'
-
             }
         }
     }
