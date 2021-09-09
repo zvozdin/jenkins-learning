@@ -8,7 +8,6 @@ pipeline {
     parameters {
         string(name: 'branch', defaultValue: env.BRANCH_NAME)
         choice(name: 'mavenCommand',
-            defaultValue: "mvn clean package -Dmaven.javadoc.skip=true -Dmaven.test.skip=true",
             choices: [
                 "mvn clean compile",
                 "mvn clean test",
@@ -22,9 +21,10 @@ pipeline {
             steps {
                 echo "BRANCH_NAME => ${branch}"
                 echo "Running command: ${mavenCommand}"
-                git 'https://github.com/zvozdin/jenkins-learning.git'
 
                 bat "${mavenCommand}"
+//                 git 'https://github.com/zvozdin/jenkins-learning.git'
+
             }
         }
     }
