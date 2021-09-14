@@ -15,7 +15,6 @@ pipeline {
             ],
             description: 'What we need to run ?')
     }
-
     stages {
         stage('Build') {
             steps {
