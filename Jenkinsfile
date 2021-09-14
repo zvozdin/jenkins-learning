@@ -4,7 +4,6 @@ pipeline {
     tools {
         maven "MAVEN_HOME"
     }
-
     parameters {
         string(name: 'branch', defaultValue: env.BRANCH_NAME)
         choice(name: 'mavenCommand',
